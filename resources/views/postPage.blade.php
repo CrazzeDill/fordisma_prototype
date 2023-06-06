@@ -124,7 +124,7 @@
                                 <div class="d-flex align-items-center">
                                     <button class="text-primer align-bottom btn reply-button" href="">
                                         <i class="fa-regular fa-message"></i>
-                                        <span>Replies</span>
+                                        <span>Reply</span>
                                     </button>
                                     <div class="d-flex align-items-center px-3">
                                         <button class="btn px-1 text-primer" onclick="toggleLike(this,event)"><i
@@ -174,12 +174,15 @@
 
         // Attach click event listeners to each reply button
         replyButtons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                console.log("AAAAAAA")
+            button.addEventListener('click', (event) => {
+                console.log('a')
+                event.preventDefault();
                 // Toggle the visibility of the corresponding reply form
-                replyForms[index].style.display = replyForms[index].style.display === 'none' ?
-                    'block' :
-                    'none';
+                if (replyForms[index].classList.contains('reply-form')) {
+                    replyForms[index].classList.remove('reply-form');
+                } else {
+                    replyForms[index].classList.add('reply-form');
+                }
             });
         });
     });
