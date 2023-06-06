@@ -20,40 +20,13 @@
             <span>All</span>
         </div>
         <p class="mt-5">Followed topics</p>
-        <div class="sl-items" data-link="/">
+        @foreach ($topiks as $topik)
+        <div class="sl-items" data-link="/t/{{str_replace(' ','_',$topik['name']) }}">
             <div class="rounded-circle d-flex align-items-center justify-content-center" style="background-color: #B7B7B7;">
             </div>
-            <span>UKM dan Organisasi</span>
+            <span>{{$topik['name']}}</span>
         </div>
-        <div class="sl-items" data-link="/">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="background-color: #B7B7B7;">
-            </div>
-            <span>Berita dan Acara Kampus</span>
-        </div>
-        <div class="sl-items" data-link="/">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="background-color: #B7B7B7;">
-            </div>
-            <span>Masukan dan Saran</span>
-        </div>
-        <div class="sl-items" data-link="/">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="background-color: #B7B7B7;">
-            </div>
-            <span>Masukan dan Saran</span>
-        </div>
-        <div class="sl-items" data-link="/">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="background-color: #B7B7B7;">
-            </div>
-            <span>Masukan dan Saran</span>
-        </div>
-        <div class="sl-items" data-link="/">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="background-color: #B7B7B7;">
-            </div>
-            <span>Masukan dan Saran</span>
-        </div>
-        <div class="sl-items" data-link="/">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="background-color: #B7B7B7;">
-            </div>
-            <span>Masukan dan Saran</span>
-        </div>
+        @endforeach
+        
     </div>
 </div>

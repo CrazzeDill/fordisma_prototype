@@ -77,10 +77,10 @@
                         voluptatibus quos, cum iusto dolor.</span>
                     <div class="reply-action">
                         <div class="d-flex align-items-center">
-                            <a class="text-primer align-bottom" href="">
+                            <button class="text-primer align-bottom btn reply-button">
                                 <i class="fa-regular fa-message"></i>
-                                <span>Replies</span>
-                            </a>
+                                <span>Reply</span>
+                            </button>
                             <div class="d-flex align-items-center px-3">
                                 <button class="btn px-1 text-primer" onclick="toggleLike(this,event)"><i
                                         class="far fa-thumbs-up" aria-hidden="true"></i></button>
@@ -93,10 +93,21 @@
                             </button>
                         </div>
                         {{-- MASUKKAN SINI --}}
+                        <div class="reply-form">
+                            <form action="" class="w-100">
+                                <div class="border-bottom ">
+                                    <input id="content" type="hidden" name="content">
+                                    <trix-editor input="content"></trix-editor>
+                                </div>
+                                <div class="d-flex w-100 flex-row-reverse">
+                                    <button type="submit" class="btn btn-primary mt-3">Reply</button>
+                                </div>
+                            </form>
+                        </div>
                         <div class="replies-identity">
                             <div class="post-author">
-                                <img class="rounded-circle" src="https://github.com/mdo.png" alt="mdo" width="30"
-                                    style="background-color: gray">
+                                <img class="rounded-circle" src="https://github.com/mdo.png" alt="mdo"
+                                    width="30" style="background-color: gray">
                                 <div class="reply-author-det">
                                     <span class="fw-bold">Regina</span>
                                     <span class="text-body-secondary">{{ $post['date'] }}</span>
@@ -111,10 +122,10 @@
                                 voluptatibus quos, cum iusto dolor.</span>
                             <div class="reply-action">
                                 <div class="d-flex align-items-center">
-                                    <a class="text-primer align-bottom" href="">
+                                    <button class="text-primer align-bottom btn reply-button" href="">
                                         <i class="fa-regular fa-message"></i>
                                         <span>Replies</span>
-                                    </a>
+                                    </button>
                                     <div class="d-flex align-items-center px-3">
                                         <button class="btn px-1 text-primer" onclick="toggleLike(this,event)"><i
                                                 class="far fa-thumbs-up" aria-hidden="true"></i></button>
@@ -127,7 +138,17 @@
                                     </button>
                                 </div>
                                 {{-- MASUKKAN SINI --}}
-
+                                <div class="reply-form">
+                                    <form action="" class="w-100">
+                                        <div class="border-bottom ">
+                                            <input id="content" type="hidden" name="content">
+                                            <trix-editor input="content"></trix-editor>
+                                        </div>
+                                        <div class="d-flex w-100 flex-row-reverse">
+                                            <button type="submit" class="btn btn-primary mt-3">Reply</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,3 +165,22 @@
         <a class="btn btn-primary w-100" href="/createPost">Create Post</a>
     </div>
 @endsection
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        replyButtons = document.querySelectorAll('.reply-button');
+        replyForms = document.querySelectorAll('.reply-form');
+
+        // Attach click event listeners to each reply button
+        replyButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                console.log("AAAAAAA")
+                // Toggle the visibility of the corresponding reply form
+                replyForms[index].style.display = replyForms[index].style.display === 'none' ?
+                    'block' :
+                    'none';
+            });
+        });
+    });
+</script>
