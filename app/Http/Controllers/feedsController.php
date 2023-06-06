@@ -32,6 +32,14 @@ class feedsController extends Controller
         ]);
     }
 
+    public function showTopicPost($topic){
+        return view('home', [
+            'current' => str_replace('_',' ',$topic),
+            "posts" => Post::findPosts($topic),
+            "topiks" => Topik::all()
+        ]);
+    }
+
     public function editPost($topic, $post){
         return view('editPost', [
             'current' => str_replace('_',' ',$topic),

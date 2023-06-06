@@ -30,7 +30,7 @@ class Post
             "slug" => "Title_lorem_ipsum_3",
             "author" => "ODP",
             "date" => "01/01/2023",
-            "topic" => "Masukan dan Satan",
+            "topic" => "Masukan dan Saran",
             "content" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dicta autem sit neque, sint commodi porro, odit distinctio corrupti nam aliquid blanditiis, ut laudantium. Qui vero maiores quisquam aperiam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet consequatur beatae adipisci ad rerum fugit recusandae temporibus facilis aliquam! Officia exercitationem incidunt obcaecati cum quis necessitatibus accusamus ex quisquam sapiente.",
             "replies" => 27,
             "likes" => 9210
@@ -46,5 +46,11 @@ class Post
     {
         $posts = static::all();
         return $posts->firstWhere("slug", $slug);
+    }
+
+    public static function findPosts($slug)
+    {
+        $posts = static::all();
+        return $posts->where("topic", str_replace('_', ' ',$slug));
     }
 }

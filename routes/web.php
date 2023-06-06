@@ -50,6 +50,7 @@ Route::get('/home',[feedsController::class, 'showHome']);
 Route::get('/popular',[feedsController::class, 'showPopular']);
 Route::get('/all',[feedsController::class, 'showHome']);
 
+Route::get('/t/{topic}/',[feedsController::class, 'showTopicPost']);
 Route::get('/t/{topic}/post/{post}',[feedsController::class, 'showPost']);
 Route::get('/t/{topic}/post/{post}/edit',[feedsController::class, 'editPost']);
 
