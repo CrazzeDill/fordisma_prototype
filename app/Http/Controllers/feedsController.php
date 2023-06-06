@@ -47,4 +47,11 @@ class feedsController extends Controller
             "topiks" => Topik::all()
         ]);
     }
+
+    public function buatPost(){
+        return view('createPost', [
+            'current' => 'Create Post',
+            "topiks" => Topik::all()
+        ]);
+    }
 }

@@ -55,11 +55,7 @@ Route::get('/t/{topic}/post/{post}',[feedsController::class, 'showPost']);
 Route::get('/t/{topic}/post/{post}/edit',[feedsController::class, 'editPost']);
 
 
-Route::get('/createPost',function () {
-    return view('createPost', [
-        'current' => 'Create Post'
-    ]);
-});
+Route::get('/createPost',[feedsController::class, 'buatPost']);
 
 
 Route::post('/posts/{id}/like', [PostController::class, 'like'])->name('posts.like');

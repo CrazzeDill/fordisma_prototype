@@ -52,6 +52,7 @@ body {
 .navbar {
     background-color: var(--white);
     padding-inline: 50px;
+    align-items: center;
 }
 
 .nav-search {
@@ -355,6 +356,12 @@ body {
     cursor: pointer;
     padding: 4px 8px;
     width: 100%;
+    z-index: 1;
+    background-color: white;
+}
+
+.editor {
+    z-index: 2;
 }
 
 .dropdown-option-topik:hover {
