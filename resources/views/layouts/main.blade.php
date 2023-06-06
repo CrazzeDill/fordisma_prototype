@@ -30,81 +30,142 @@
         </div>
     </div>
 
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reportModalLabel">Report Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Your report form goes here -->
+                    <form id="reportForm">
+                        <div class="mb-3">
+                            <label for="context" class="form-label">Ada apa dengan post ini ?</label>
+                            <textarea class="form-control" name="context" id="context" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="submitReport">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="successMessage" class="alert alert-success d-none" role="alert">
+        Report submitted successfully!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <script>
-        var navigationSL = document.getElementsByClassName("sl-items");
-        for (var i = 0; i < navigationSL.length; i++) {
-            navigationSL[i].addEventListener("click", function() {
-                var link = this.getAttribute("data-link");
-                window.location.href = link;
+        document.addEventListener('DOMContentLoaded', () => {
+            var navigationSL = document.getElementsByClassName("sl-items");
+            for (var i = 0; i < navigationSL.length; i++) {
+                navigationSL[i].addEventListener("click", function() {
+                    var link = this.getAttribute("data-link");
+                    window.location.href = link;
+                });
+            }
+
+            function toggleLike(button, event) {
+                event.stopPropagation();
+                var likeButton = button;
+                var dislikeButton = button.nextElementSibling.nextElementSibling;
+                var likeCount = button.nextElementSibling;
+                var currentCount = parseInt(likeCount.textContent);
+                var liked = button.dataset.liked === 'true';
+                var disliked = dislikeButton.dataset.disliked === 'true';
+
+                var heartIcon = button.querySelector('i');
+
+                if (liked) {
+
+                    likeCount.textContent = currentCount - 1;
+                    button.dataset.liked = 'false';
+                    heartIcon.classList.remove('fas'); // Remove solid heart class
+                    heartIcon.classList.add('far'); // Add regular heart class
+                } else {
+                    likeCount.textContent = currentCount + 1;
+                    button.dataset.liked = 'true';
+                    dislikeButton.dataset.disliked = 'false';
+                    heartIcon.classList.remove('far'); // Remove regular heart class
+                    heartIcon.classList.add('fas'); // Add solid heart class
+
+                    // Reset the dislike button
+                    var dislikeIcon = dislikeButton.querySelector('i');
+                    dislikeIcon.classList.remove('fas'); // Remove solid thumbs-down class
+                    dislikeIcon.classList.add('far'); // Add regular thumbs-down class
+                }
+            }
+
+            function toggleDislike(button, event) {
+                event.stopPropagation();
+                var dislikeButton = button;
+                var likeButton = button.previousElementSibling.previousElementSibling;
+                var likeCount = button.previousElementSibling;
+                var currentCount = parseInt(likeCount.textContent);
+                var disliked = button.dataset.disliked === 'true';
+                var liked = likeButton.dataset.liked === 'true';
+
+                var thumbsDownIcon = button.querySelector('i');
+
+                if (disliked) {
+
+                    likeCount.textContent = currentCount + 1;
+                    button.dataset.disliked = 'false';
+                    thumbsDownIcon.classList.remove('fas'); // Remove solid thumbs-down class
+                    thumbsDownIcon.classList.add('far'); // Add regular thumbs-down class
+
+                } else {
+
+                    likeCount.textContent = currentCount - 1;
+                    button.dataset.disliked = 'true';
+                    likeButton.dataset.liked = 'false';
+                    thumbsDownIcon.classList.remove('far'); // Remove regular thumbs-down class
+                    thumbsDownIcon.classList.add('fas'); // Add solid thumbs-down class
+
+                    // Reset the like button
+                    var heartIcon = likeButton.querySelector('i');
+                    heartIcon.classList.remove('fas'); // Remove solid heart class
+                    heartIcon.classList.add('far'); // Add regular heart class
+                    // ... Update the UI if necessary
+                }
+            }
+
+            var reportButtons = document.querySelectorAll('.report-btn');
+            reportButtons.forEach(function(button, index) {
+                button.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    console.log("A")
+                });
             });
-        }
 
-        function toggleLike(button, event) {
-            event.stopPropagation();
-            var likeButton = button;
-            var dislikeButton = button.nextElementSibling.nextElementSibling;
-            var likeCount = button.nextElementSibling;
-            var currentCount = parseInt(likeCount.textContent);
-            var liked = button.dataset.liked === 'true';
-            var disliked = dislikeButton.dataset.disliked === 'true';
+            const appendAlert = (message, type) => {
+                const wrapper = document.createElement('div')
+                wrapper.innerHTML = [
+                    `<div id="successMessage" class="alert alert-${type} alert-dismissible" role="alert">`,
+                    `   <div>${message}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
+                ].join('')
 
-            var heartIcon = button.querySelector('i');
-
-            if (liked) {
-
-                likeCount.textContent = currentCount - 1;
-                button.dataset.liked = 'false';
-                heartIcon.classList.remove('fas'); // Remove solid heart class
-                heartIcon.classList.add('far'); // Add regular heart class
-            } else {
-                likeCount.textContent = currentCount + 1;
-                button.dataset.liked = 'true';
-                dislikeButton.dataset.disliked = 'false';
-                heartIcon.classList.remove('far'); // Remove regular heart class
-                heartIcon.classList.add('fas'); // Add solid heart class
-
-                // Reset the dislike button
-                var dislikeIcon = dislikeButton.querySelector('i');
-                dislikeIcon.classList.remove('fas'); // Remove solid thumbs-down class
-                dislikeIcon.classList.add('far'); // Add regular thumbs-down class
+                document.body.append(wrapper)
             }
-        }
 
-        function toggleDislike(button, event) {
-            event.stopPropagation();
-            var dislikeButton = button;
-            var likeButton = button.previousElementSibling.previousElementSibling;
-            var likeCount = button.previousElementSibling;
-            var currentCount = parseInt(likeCount.textContent);
-            var disliked = button.dataset.disliked === 'true';
-            var liked = likeButton.dataset.liked === 'true';
+            document.getElementById('submitReport').addEventListener('click', function() {
+                // Handle the report form submission here
+                console.log("AAAAAA")
+                // Example: Show a success message
+                appendAlert('Report submitted successfully!', 'success')
 
-            var thumbsDownIcon = button.querySelector('i');
-
-            if (disliked) {
-
-                likeCount.textContent = currentCount + 1;
-                button.dataset.disliked = 'false';
-                thumbsDownIcon.classList.remove('fas'); // Remove solid thumbs-down class
-                thumbsDownIcon.classList.add('far'); // Add regular thumbs-down class
-
-            } else {
-
-                likeCount.textContent = currentCount - 1;
-                button.dataset.disliked = 'true';
-                likeButton.dataset.liked = 'false';
-                thumbsDownIcon.classList.remove('far'); // Remove regular thumbs-down class
-                thumbsDownIcon.classList.add('fas'); // Add solid thumbs-down class
-
-                // Reset the like button
-                var heartIcon = likeButton.querySelector('i');
-                heartIcon.classList.remove('fas'); // Remove solid heart class
-                heartIcon.classList.add('far'); // Add regular heart class
-                // ... Update the UI if necessary
-            }
-        }
+                // Reset the form
+                document.getElementById('reportForm').reset();
+            });
+        });
     </script>
 </body>
 

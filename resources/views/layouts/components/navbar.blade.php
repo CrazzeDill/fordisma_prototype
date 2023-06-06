@@ -9,7 +9,7 @@
                 <a class="nav-link active align-middle fw-bold fs-5" aria-current="page">{{$current}}</a>
             </li>
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex my-auto" role="search">
             <input class="form-control me-2 nav-search" type="search" placeholder="Type to search" aria-label="Search">
         </form>
         <div class="flex-shrink-0 dropdown border p-1 rounded">

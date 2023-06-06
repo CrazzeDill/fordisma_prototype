@@ -36,7 +36,7 @@
                     <button class="btn px-1 text-primer"  onclick="toggleDislike(this,event)"><i class="far fa-thumbs-down"
                             aria-hidden="true"></i></button>
                 </div>
-                <button class="btn text-primer">
+                <button class="btn text-primer report-btn" data-bs-toggle="modal" data-bs-target="#reportModal" >
                     <i class="fa-regular fa-flag"></i>
                 </button>
             </div>
@@ -57,3 +57,4 @@
     <a class="btn btn-primary w-100" href="/createPost">Create Post</a>
 </div>
 @endsection
+

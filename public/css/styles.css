@@ -350,6 +350,17 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     padding: 8px;
+    z-index: 100;
+}
+
+#successMessage {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+transform: translate(-50%, -50%);
+    right: 0;
+    width: 50%;
+    z-index: 9999;
 }
 
 .dropdown-option-topik {
@@ -358,6 +369,7 @@ body {
     width: 100%;
     z-index: 1;
     background-color: white;
+    
 }
 
 .editor {

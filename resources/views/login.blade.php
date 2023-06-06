@@ -1,7 +1,7 @@
 @extends('layouts.lologin')
 
 @section('content')
-<form action="{{ route('login-form') }}" method="POST" class="needs-validation" novalidate>
+<form action="{{ route('login-form') }}" method="POST" autocomplete="off" class="needs-validation" novalidate>
     @csrf
     <div class="d-flex flex-column login-field">
         <label for="user">Email or Username</label>
