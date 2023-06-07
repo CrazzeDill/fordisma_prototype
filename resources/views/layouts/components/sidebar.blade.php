@@ -1,4 +1,4 @@
-<div class="col sidebar-left sticky-top">
+<div class="col-2 sidebar-left sticky-top">
     <div class="feeds">
         <p>Feeds</p>
         <div class="sl-items" data-link="/home">

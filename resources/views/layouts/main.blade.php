@@ -26,6 +26,9 @@
             </div>
             <div class="col sidebar-right">
                 @yield('rbar')
+                <div class="card-page">
+                    <span>FORDISMA © 2023. All rights reserved.</span>
+                </div>
             </div>
         </div>
     </div>
@@ -72,13 +75,13 @@
         </div>
     </div>
 
-    @if(session()->has('message'))
+    @if (session()->has('message'))
     <div id="successMessage" class="alert alert-success alert-dismissible" role="alert">
-        <div>{{session('message')}}</div>
+        <div>{{ session('message') }}</div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
@@ -221,6 +224,15 @@
             myModal.hide();
 
             confirmButton.removeEventListener('click', deleteGrandparent);
+        }
+
+        function toggleFollow(button, event) {
+            event.stopPropagation();
+            if (button.style.color === 'gold') {
+                button.style.color = 'white';
+            } else {
+                button.style.color = 'gold';
+            }
         }
     </script>
 </body>

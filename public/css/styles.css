@@ -7,6 +7,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 * {
     font-family: "Inria Sans";
 }
@@ -450,4 +454,47 @@ body {
     padding: 20px 10px 5px;
     gap: 10px;
     width: 100%;
+}
+
+.profile-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 44px;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.profile-bg {
+    position: relative;
+
+    background: #d9d9d9;
+    height: 150px;
+    width: 100%;
+}
+
+.profile-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 21px 27px 21px;
+    gap: 8px;
+}
+
+.profile-pic {
+    position: absolute;
+    width: auto;
+    left: 16px;
+    bottom: 0;
+    transform: translate(0, 50%);
+}
+
+.profile-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px 21px;
 }

@@ -4,7 +4,7 @@ use App\Http\Controllers\feedsController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\profileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,10 +55,10 @@ Route::get('/t/{topic}/post/{post}',[feedsController::class, 'showPost']);
 Route::get('/t/{topic}/post/{post}/edit',[feedsController::class, 'editPost']);
 Route::get('/t/{topic}/post/{post}/delete',[feedsController::class, 'deletePost']);
 
-
-
 Route::get('/createPost',[feedsController::class, 'buatPost']);
 Route::get('/reported',[feedsController::class,'showReports']);
 
 Route::post('/posts/{id}/like', [PostController::class, 'like'])->name('posts.like');
 Route::post('/posts/{id}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
+
+Route::get('/p/{username}',[profileController::class,'showProfile']);

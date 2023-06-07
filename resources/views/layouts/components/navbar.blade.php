@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-md sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">
+        <div class="navbar-brand" href="">
             <img src="/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-middle">
             <span class="fs-6">Jambi University</span>
-        </a>
+        </div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active align-middle fw-bold fs-5" aria-current="page">{{$current}}</a>
+                <span class="nav-link active align-middle fw-bold fs-6" aria-current="page">{{$current}}</span>
             </li>
         </ul>
         <form class="d-flex my-auto" role="search">
@@ -14,7 +14,7 @@
         </form>
         <div class="flex-shrink-0 dropdown border p-1 rounded">
             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                <img src="https://github.com/CrazzeDill.png" alt="CrazzeDill" width="32" height="32" class="rounded-circle">
                 <span class="align-middle fs-6 ps-2">USERNAME</span>
             </a>
             <ul class="dropdown-menu text-small shadow dropdown-menu-end">

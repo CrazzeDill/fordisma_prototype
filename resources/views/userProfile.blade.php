@@ -2,19 +2,31 @@
 
 @section('content')
     <div class="main-container">
-        <a class="create-post" href="/createPost">
-            <button href="/" class="create-post-btn form-control">Create Post</button>
-            <button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
-        </a>
+        <div class="profile-top">
+            <div class="profile-bg">
+                <div class="profile-pic">
+                    <img class="rounded-circle" src="https://github.com/CrazzeDill.png" alt="CrazzeDill" width="100"
+                        style="background-color: gray">
+                </div>
+            </div>
+            <div class="profile-head">
+                
+                <h6 class="fw-bold">@ {{$current}}</h6>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iure expedita cumque similique
+                    praesentium dolore eaque suscipit soluta corrupti, veritatis magnam porro natus dignissimos magni ad
+                    dolor tempora ex ratione?</span>
+            </div>      
+        </div>
+
         @foreach ($posts as $post)
             <div class="posts"
                 onclick="location.href = `/t/{{ str_replace(' ', '_', $post['topic']) }}/post/{{ $post['slug'] }}`;">
                 <div class="post-identity">
-                    <div  class="post-author">
+                    <div class="post-author">
                         <img class="rounded-circle" src="https://github.com/CrazzeDill.png" alt="CrazzeDill" width="50"
                             style="background-color: gray">
                         <div class="post-author-det">
-                            <a href="/p/{{ $post['author'] }}" class="fw-bold text-black">{{ $post['author'] }}</a>
+                            <span class="fw-bold">{{ $post['author'] }}</span>
                             <span class="text-body-secondary">{{ $post['date'] }}</span>
                         </div>
                     </div>
@@ -57,13 +69,10 @@
                 </div>
             </div>
         @endforeach
+
     </div>
 @stop
 
 @section('rbar')
-    <div class="card-page">
-        <h5 class="fw-bold w-100">{{ $current }}</h5>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quos obcaecati id qui</p>
-        <a class="btn btn-primary w-100" href="/createPost">Create Post</a>
-    </div>
+
 @endsection

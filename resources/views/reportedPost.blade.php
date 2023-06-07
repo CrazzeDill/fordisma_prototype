@@ -10,7 +10,7 @@
             <div class="report-item">
                 <div class="post-identity">
                     <div class="post-author">
-                        <img class="rounded-circle" src="https://github.com/mdo.png" alt="mdo" width="40"
+                        <img class="rounded-circle" src="https://github.com/CrazzeDill.png" alt="CrazzeDill" width="40"
                             style="background-color: gray">
                         <div class="reply-author-det">
                             <span class="fw-bold">{{$rep['author']}}</span>

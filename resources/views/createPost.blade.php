@@ -10,7 +10,7 @@
             </div>
             <div class="dropdown-menu-topik">
                 @foreach ($topiks as $topik)
-                    <div class="dropdown-option-topik" tabindex="-1" onclick="selectOption('{{$topik['name']}}')">{{$topik['name']}}</div>
+                    <div class="dropdown-option-topik" tabindex="-1" onclick="selectOption(`{{$topik['name']}}`)">{{$topik['name']}}</div>
                 @endforeach
                 <!-- Add more options as needed -->
             </div>
@@ -23,7 +23,8 @@
                     <trix-editor input="content" class="editor"></trix-editor>
                 </div>
                 <div class="d-flex w-100 flex-row-reverse">
-                    <button type="submit" class="btn btn-primary mt-3">Submit Post</button>
+                    <a href="/home" class="btn btn-primary mt-3">Submit Post</a>
+                    {{-- <button type="submit" class="btn btn-primary mt-3">Submit Post</button> --}}
                 </div>
             </form>
         </div>
