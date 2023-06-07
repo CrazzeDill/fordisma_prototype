@@ -503,11 +503,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
 
     background: #ffffff;
     border: 1px solid #d9d9d9;
-
 }
 
 .search-item {
@@ -524,4 +522,19 @@ body {
 
 .search-item:hover {
     border: 1px solid #333;
+}
+
+.admin-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 30px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 15px;
+}
+
+.tabel-admin {
+    max-height: 500px;
+    overflow-y: scroll;
 }

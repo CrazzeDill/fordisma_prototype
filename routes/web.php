@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\feedsController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
@@ -63,3 +64,9 @@ Route::post('/posts/{id}/dislike', [PostController::class, 'dislike'])->name('po
 
 Route::get('/p/{username}',[profileController::class,'showProfile']);
 Route::get('/search',[feedsController::class, 'searchpage']);
+
+Route::get('/admin',[adminController::class,'showOverview']);
+Route::get('/admin/topik',[adminController::class,'showTopik']);
+Route::get('/admin/post',[adminController::class,'showPost']);
+Route::get('/admin/p',[adminController::class,'showUser']);
+

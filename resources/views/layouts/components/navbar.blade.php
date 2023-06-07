@@ -18,7 +18,7 @@
                 <span class="align-middle fs-6 ps-2">USERNAME</span>
             </a>
             <ul class="dropdown-menu text-small shadow dropdown-menu-end">
-                <li><a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                <li><a class="dropdown-item" href="/p/USERNAME"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
                 <li><a class="dropdown-item" href="#"><i class="fa fa-gear" aria-hidden="true"></i> Settings</a></li>
                 <li><a class="dropdown-item" href="/reported"><i class="fa fa-flag" aria-hidden="true"></i> Manage posts</a></li>
                 <li>
