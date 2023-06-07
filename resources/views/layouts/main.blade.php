@@ -54,118 +54,174 @@
         </div>
     </div>
 
-    <div id="successMessage" class="alert alert-success d-none" role="alert">
-        Report submitted successfully!
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Konfirmasi penghapusan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="confirmButton" class="btn btn-danger" onclick="deleteGrandparent()">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if(session()->has('message'))
+    <div id="successMessage" class="alert alert-success alert-dismissible" role="alert">
+        <div>{{session('message')}}</div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    @endif
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            var navigationSL = document.getElementsByClassName("sl-items");
-            for (var i = 0; i < navigationSL.length; i++) {
-                navigationSL[i].addEventListener("click", function() {
-                    var link = this.getAttribute("data-link");
-                    window.location.href = link;
-                });
-            }
-
-            function toggleLike(button, event) {
-                event.stopPropagation();
-                var likeButton = button;
-                var dislikeButton = button.nextElementSibling.nextElementSibling;
-                var likeCount = button.nextElementSibling;
-                var currentCount = parseInt(likeCount.textContent);
-                var liked = button.dataset.liked === 'true';
-                var disliked = dislikeButton.dataset.disliked === 'true';
-
-                var heartIcon = button.querySelector('i');
-
-                if (liked) {
-
-                    likeCount.textContent = currentCount - 1;
-                    button.dataset.liked = 'false';
-                    heartIcon.classList.remove('fas'); // Remove solid heart class
-                    heartIcon.classList.add('far'); // Add regular heart class
-                } else {
-                    likeCount.textContent = currentCount + 1;
-                    button.dataset.liked = 'true';
-                    dislikeButton.dataset.disliked = 'false';
-                    heartIcon.classList.remove('far'); // Remove regular heart class
-                    heartIcon.classList.add('fas'); // Add solid heart class
-
-                    // Reset the dislike button
-                    var dislikeIcon = dislikeButton.querySelector('i');
-                    dislikeIcon.classList.remove('fas'); // Remove solid thumbs-down class
-                    dislikeIcon.classList.add('far'); // Add regular thumbs-down class
-                }
-            }
-
-            function toggleDislike(button, event) {
-                event.stopPropagation();
-                var dislikeButton = button;
-                var likeButton = button.previousElementSibling.previousElementSibling;
-                var likeCount = button.previousElementSibling;
-                var currentCount = parseInt(likeCount.textContent);
-                var disliked = button.dataset.disliked === 'true';
-                var liked = likeButton.dataset.liked === 'true';
-
-                var thumbsDownIcon = button.querySelector('i');
-
-                if (disliked) {
-
-                    likeCount.textContent = currentCount + 1;
-                    button.dataset.disliked = 'false';
-                    thumbsDownIcon.classList.remove('fas'); // Remove solid thumbs-down class
-                    thumbsDownIcon.classList.add('far'); // Add regular thumbs-down class
-
-                } else {
-
-                    likeCount.textContent = currentCount - 1;
-                    button.dataset.disliked = 'true';
-                    likeButton.dataset.liked = 'false';
-                    thumbsDownIcon.classList.remove('far'); // Remove regular thumbs-down class
-                    thumbsDownIcon.classList.add('fas'); // Add solid thumbs-down class
-
-                    // Reset the like button
-                    var heartIcon = likeButton.querySelector('i');
-                    heartIcon.classList.remove('fas'); // Remove solid heart class
-                    heartIcon.classList.add('far'); // Add regular heart class
-                    // ... Update the UI if necessary
-                }
-            }
-
-            var reportButtons = document.querySelectorAll('.report-btn');
-            reportButtons.forEach(function(button, index) {
-                button.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                    console.log("A")
-                });
+        var navigationSL = document.getElementsByClassName("sl-items");
+        for (var i = 0; i < navigationSL.length; i++) {
+            navigationSL[i].addEventListener("click", function() {
+                var link = this.getAttribute("data-link");
+                window.location.href = link;
             });
+        }
 
-            const appendAlert = (message, type) => {
-                const wrapper = document.createElement('div')
-                wrapper.innerHTML = [
-                    `<div id="successMessage" class="alert alert-${type} alert-dismissible" role="alert">`,
-                    `   <div>${message}</div>`,
-                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-                    '</div>'
-                ].join('')
+        function toggleLike(button, event) {
+            event.stopPropagation();
+            var likeButton = button;
+            var dislikeButton = button.nextElementSibling.nextElementSibling;
+            var likeCount = button.nextElementSibling;
+            var currentCount = parseInt(likeCount.textContent);
+            var liked = button.dataset.liked === 'true';
+            var disliked = dislikeButton.dataset.disliked === 'true';
 
-                document.body.append(wrapper)
+            var heartIcon = button.querySelector('i');
+
+            if (liked) {
+
+                likeCount.textContent = currentCount - 1;
+                button.dataset.liked = 'false';
+                heartIcon.classList.remove('fas'); // Remove solid heart class
+                heartIcon.classList.add('far'); // Add regular heart class
+            } else {
+                likeCount.textContent = currentCount + 1;
+                button.dataset.liked = 'true';
+                dislikeButton.dataset.disliked = 'false';
+                heartIcon.classList.remove('far'); // Remove regular heart class
+                heartIcon.classList.add('fas'); // Add solid heart class
+
+                // Reset the dislike button
+                var dislikeIcon = dislikeButton.querySelector('i');
+                dislikeIcon.classList.remove('fas'); // Remove solid thumbs-down class
+                dislikeIcon.classList.add('far'); // Add regular thumbs-down class
             }
+        }
 
-            document.getElementById('submitReport').addEventListener('click', function() {
-                // Handle the report form submission here
-                console.log("AAAAAA")
-                // Example: Show a success message
-                appendAlert('Report submitted successfully!', 'success')
+        function toggleDislike(button, event) {
+            event.stopPropagation();
+            var dislikeButton = button;
+            var likeButton = button.previousElementSibling.previousElementSibling;
+            var likeCount = button.previousElementSibling;
+            var currentCount = parseInt(likeCount.textContent);
+            var disliked = button.dataset.disliked === 'true';
+            var liked = likeButton.dataset.liked === 'true';
 
-                // Reset the form
-                document.getElementById('reportForm').reset();
+            var thumbsDownIcon = button.querySelector('i');
+
+            if (disliked) {
+
+                likeCount.textContent = currentCount + 1;
+                button.dataset.disliked = 'false';
+                thumbsDownIcon.classList.remove('fas'); // Remove solid thumbs-down class
+                thumbsDownIcon.classList.add('far'); // Add regular thumbs-down class
+
+            } else {
+
+                likeCount.textContent = currentCount - 1;
+                button.dataset.disliked = 'true';
+                likeButton.dataset.liked = 'false';
+                thumbsDownIcon.classList.remove('far'); // Remove regular thumbs-down class
+                thumbsDownIcon.classList.add('fas'); // Add solid thumbs-down class
+
+                // Reset the like button
+                var heartIcon = likeButton.querySelector('i');
+                heartIcon.classList.remove('fas'); // Remove solid heart class
+                heartIcon.classList.add('far'); // Add regular heart class
+                // ... Update the UI if necessary
+            }
+        }
+
+        var reportButtons = document.querySelectorAll('.report-btn');
+        reportButtons.forEach(function(button, index) {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                console.log("A")
             });
         });
+
+        const appendAlert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div id="successMessage" class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('')
+
+            document.body.append(wrapper)
+        }
+
+        document.getElementById('submitReport').addEventListener('click', function() {
+            // Handle the report form submission here
+            console.log("AAAAAA")
+            // Example: Show a success message
+            appendAlert('Report submitted successfully!', 'success')
+
+            // Reset the form
+            document.getElementById('reportForm').reset();
+        });
+
+        var confirmButton;
+        var grandparentToDelete;
+        var myModal;
+
+        function confirmDelete(button) {
+            grandparentToDelete = button.parentNode.parentNode.parentNode;
+            confirmButton = document.getElementById('confirmButton');
+            confirmButton.addEventListener('click', deleteGrandparent);
+
+            var modalElement = document.getElementById('confirmModal');
+            myModal = new bootstrap.Modal(modalElement);
+            myModal.show();
+        }
+
+        function confirmDelete(button, link) {
+            confirmButton = document.getElementById('confirmButton');
+            confirmButton.addEventListener('click', function() {
+                window.location.href = link
+            });
+
+            var modalElement = document.getElementById('confirmModal');
+            myModal = new bootstrap.Modal(modalElement);
+            myModal.show();
+        }
+
+        function deleteGrandparent() {
+            grandparentToDelete.parentNode.removeChild(grandparentToDelete);
+            appendAlert('Post berhasil dihapus', 'success')
+            hideModal();
+        }
+
+        function hideModal() {
+            myModal.hide();
+
+            confirmButton.removeEventListener('click', deleteGrandparent);
+        }
     </script>
 </body>
 

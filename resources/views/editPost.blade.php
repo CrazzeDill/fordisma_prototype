@@ -9,8 +9,11 @@
                 <input id="content" value="{{$post['content']}}" type="hidden" name="content">
                 <trix-editor input="content"></trix-editor>
             </div>
-            <div class="d-flex w-100 flex-row-reverse">
+            <div class="d-flex w-100 flex-row-reverse justify-content-between">
                 <button type="submit" class="btn btn-primary mt-3">Submit Post</button>
+                <button type="button" class="btn text-primer " onclick="confirmDelete(this, `/t/{{ str_replace(' ', '_', $post['topic']) }}/post/{{ $post['slug'] }}/delete`)">
+                    <i class="fa fa-trash" aria-hidden="true"></i> Delete Post
+                </button>
             </div>
         </form>
     </div>

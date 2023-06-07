@@ -46,17 +46,19 @@ Route::get('/register', [registerController::class,'view']);
 Route::get('/register/complete', [registerController::class,'selesai']);
 Route::post('/register', [registerController::class,'processForm'])->name('register-form');
 
-Route::get('/home',[feedsController::class, 'showHome']);
+Route::get('/home',[feedsController::class, 'showHome'])->name('home');
 Route::get('/popular',[feedsController::class, 'showPopular']);
 Route::get('/all',[feedsController::class, 'showHome']);
 
 Route::get('/t/{topic}/',[feedsController::class, 'showTopicPost']);
 Route::get('/t/{topic}/post/{post}',[feedsController::class, 'showPost']);
 Route::get('/t/{topic}/post/{post}/edit',[feedsController::class, 'editPost']);
+Route::get('/t/{topic}/post/{post}/delete',[feedsController::class, 'deletePost']);
+
 
 
 Route::get('/createPost',[feedsController::class, 'buatPost']);
-
+Route::get('/reported',[feedsController::class,'showReports']);
 
 Route::post('/posts/{id}/like', [PostController::class, 'like'])->name('posts.like');
 Route::post('/posts/{id}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');

@@ -2,10 +2,6 @@
 
 @section('content')
     <div class="main-container">
-        <a class="create-post" href="/createPost">
-            <button href="/" class="create-post-btn form-control">Create Post</button>
-            <button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
-        </a>
         <div class="post-cont">
             <div class="post-identity">
                 <div class="post-author">

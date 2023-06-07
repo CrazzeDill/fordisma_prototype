@@ -45,8 +45,12 @@ body {
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:visited {
-    background-color: var(--primary) !important;
+    background-color: var(--primary);
     border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: #340d91;
 }
 
 .navbar {
@@ -132,7 +136,7 @@ body {
 
     width: 100%;
     align-items: stretch;
-    border-left: 1px solid rgba(184, 183, 183, 0.5);
+    /* border-left: 1px solid rgba(184, 183, 183, 0.5); */
 }
 
 /*                                            */
@@ -357,7 +361,7 @@ body {
     position: fixed;
     top: 40px;
     left: 50%;
-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     right: 0;
     width: 50%;
     z-index: 9999;
@@ -369,7 +373,6 @@ transform: translate(-50%, -50%);
     width: 100%;
     z-index: 1;
     background-color: white;
-    
 }
 
 .editor {
@@ -427,4 +430,24 @@ transform: translate(-50%, -50%);
 
 .reply-form {
     display: none;
+}
+
+.report-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 10px;
+    gap: 10px;
+    background-color: whitesmoke;
+    width: 100%;
+    border-left: 5px solid var(--primary);
+}
+
+.report-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 10px 5px;
+    gap: 10px;
+    width: 100%;
 }
