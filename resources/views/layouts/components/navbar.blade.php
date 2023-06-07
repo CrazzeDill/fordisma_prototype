@@ -9,8 +9,8 @@
                 <span class="nav-link active align-middle fw-bold fs-6" aria-current="page">{{$current}}</span>
             </li>
         </ul>
-        <form class="d-flex my-auto" role="search">
-            <input class="form-control me-2 nav-search" type="search" placeholder="Type to search" aria-label="Search">
+        <form action="/search" class="d-flex my-auto" role="search" autocomplete="off">
+            <input class="form-control me-2 nav-search" name="q" type="search" placeholder="Type to search" aria-label="Search">
         </form>
         <div class="flex-shrink-0 dropdown border p-1 rounded">
             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

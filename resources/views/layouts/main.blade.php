@@ -193,7 +193,7 @@
         var grandparentToDelete;
         var myModal;
 
-        function confirmDelete(button) {
+        function confirmDeleteA(button) {
             grandparentToDelete = button.parentNode.parentNode.parentNode;
             confirmButton = document.getElementById('confirmButton');
             confirmButton.addEventListener('click', deleteGrandparent);
@@ -218,6 +218,11 @@
             grandparentToDelete.parentNode.removeChild(grandparentToDelete);
             appendAlert('Post berhasil dihapus', 'success')
             hideModal();
+        }
+
+        function deleteGrandparent2(button, message) {
+            button.parentNode.parentNode.parentNode.remove();
+            appendAlert(message, 'success')
         }
 
         function hideModal() {

@@ -103,4 +103,12 @@ class feedsController extends Controller
             "reports" => $combined,
         ]);
     }
+
+    public function searchPage(Request $request){
+        return view('search', [
+            'current' => 'Search Results',
+            "topiks" => Topik::all(),
+            'post' => Post::find('Title_lorem_ipsum')
+        ]);
+    }
 }

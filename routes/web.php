@@ -62,3 +62,4 @@ Route::post('/posts/{id}/like', [PostController::class, 'like'])->name('posts.li
 Route::post('/posts/{id}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
 
 Route::get('/p/{username}',[profileController::class,'showProfile']);
+Route::get('/search',[feedsController::class, 'searchpage']);

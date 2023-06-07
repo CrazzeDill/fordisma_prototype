@@ -5,7 +5,7 @@
     <div class="post-cont">
         <div class="post-identity">
             <div class="post-author">
-                <img class="rounded-circle" src="https://github.com/mdo.png" alt="mdo" width="50" style="background-color: gray">
+                <img class="rounded-circle" src="https://github.com/CrazzeDill.png" alt="CrazzeDill" width="50" style="background-color: gray">
                 <div class="post-author-det">
                     <span class="fw-bold">{{ $post['author'] }}</span>
                     <span class="text-body-secondary">{{ $post['date'] }}</span>
@@ -59,7 +59,7 @@
         <div class="replies-cont">
             <div class="replies-identity">
                 <div class="post-author">
-                    <img class="rounded-circle" src="https://github.com/mdo.png" alt="mdo" width="30" style="background-color: gray">
+                    <img class="rounded-circle" src="https://github.com/CrazzeDill.png" alt="CrazzeDill" width="30" style="background-color: gray">
                     <div class="reply-author-det">
                         <span class="fw-bold">Hazron Redian</span>
                         <span class="text-body-secondary">{{ $post['date'] }}</span>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="replies-identity">
                         <div class="post-author">
-                            <img class="rounded-circle" src="https://github.com/mdo.png" alt="mdo" width="30" style="background-color: gray">
+                            <img class="rounded-circle" src="https://github.com/CrazzeDill.png" alt="CrazzeDill" width="30" style="background-color: gray">
                             <div class="reply-author-det">
                                 <span class="fw-bold">Regina</span>
                                 <span class="text-body-secondary">{{ $post['date'] }}</span>
