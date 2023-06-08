@@ -10,7 +10,7 @@
             <div class="posts"
                 onclick="location.href = `/t/{{ str_replace(' ', '_', $post['topic']) }}/post/{{ $post['slug'] }}`;">
                 <div class="post-identity">
-                    <div  class="post-author">
+                    <div class="post-author">
                         <img class="rounded-circle" src="https://github.com/CrazzeDill.png" alt="CrazzeDill" width="50"
                             style="background-color: gray">
                         <div class="post-author-det">
@@ -19,13 +19,17 @@
                         </div>
                     </div>
                     <div class="topik-btns">
-                        <a href="/t/{{ str_replace(' ', '_', $post['topic']) }}" class="btn btn-primary">{{ $post['topic'] }}
+                        @isset($post['isPinned'])
+                            <button class="btn text-secondary"><i class="fa fa-thumb-tack" aria-hidden="true"></i></button>
+                        @endisset
+                        <a href="/t/{{ str_replace(' ', '_', $post['topic']) }}"
+                            class="btn btn-primary">{{ $post['topic'] }}
                         </a>
                         <button onclick="toggleFollow(this, event)" class="btn btn-primary" style="color:gold">
                             <i class="fa fa-star" aria-hidden="true"></i>
-                        </button>    
+                        </button>
                     </div>
-                    
+
                 </div>
                 <div class="post-content">
                     <h5 class="fw-bold">{{ $post['title'] }}</h5 class="fw-bold">

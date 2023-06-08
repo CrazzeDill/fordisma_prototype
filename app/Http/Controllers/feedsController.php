@@ -23,7 +23,7 @@ class feedsController extends Controller
 
         return view('home', [
             'current' => 'Home',
-            'posts' => $posts,
+            'posts' => $posts->sortByDesc('isPinned'),
             'topiks' => Topik::all()
         ]);
     }
@@ -60,7 +60,7 @@ class feedsController extends Controller
     {
         return view('home', [
             'current' => str_replace('_', ' ', $topic),
-            "posts" => Post::findPosts($topic),
+            "posts" => Post::findPosts($topic)->sortByDesc('isPinned'),
             "topiks" => Topik::all()
         ]);
     }
@@ -84,7 +84,7 @@ class feedsController extends Controller
         });
 
         // Redirect or return a response
-        return redirect()->route('home',["delete" => $post])->with('message','Post berhasil dihapus');
+        return redirect()->route('home', ["delete" => $post])->with('message', 'Post berhasil dihapus');
     }
     public function buatPost()
     {
@@ -114,7 +114,8 @@ class feedsController extends Controller
         ]);
     }
 
-    public function searchPage(Request $request){
+    public function searchPage(Request $request)
+    {
         return view('search', [
             'current' => 'Search Results',
             "topiks" => Topik::all(),
@@ -125,9 +126,19 @@ class feedsController extends Controller
         ]);
     }
 
-    public function seePost(Request $request){
+    public function seePost(Request $request)
+    {
         return view('tes', [
             "data" => $request
+        ]);
+    }
+
+    public function settings()
+    {
+        return view('settings', [
+            "current" => "Pengaturan",
+            "topiks" => Topik::all(),
+
         ]);
     }
 }

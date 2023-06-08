@@ -39,7 +39,7 @@
                     <form id="reportForm">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama Topik</label>
-                            <input class="form-control" name="name" id="name" type="text"</input>
+                            <input class="form-control" name="namaTopik" id="name" type="text"</input>
                         </div>
                         <div class="mb-3">
                             <label for="context" class="form-label">Deskripsi singkat</label>

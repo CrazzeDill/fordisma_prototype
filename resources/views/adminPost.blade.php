@@ -23,7 +23,14 @@
                                 <td>{{ $post['likes'] }}</td>
                                 <td class="">
                                     <a class="btn btn-primary" href="/t/{{ str_replace(' ', '_', $post['topic']) }}/post/{{ $post['slug'] }}"><i class="fa fa-share-square" aria-hidden="true"></i></a>
-                                    <a href="" class="btn btn-primary"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
+
+                                    @if (isset($post['isPinned']))
+                                    <button onclick="appendAlert('Post berhasil di-Pin','success')" class="btn btn-success"><i class="fa fa-thumb-tack" aria-hidden="true"></i></button>
+                                        
+                                    @else
+                                    <button onclick="appendAlert('Post berhasil di-Pin','success')" class="btn btn-primary"><i class="fa fa-thumb-tack" aria-hidden="true"></i></button>
+                                        
+                                    @endif
                                     <button onclick="confirmDeleteA(this)" class="btn btn-danger"><i class="fa fa-trash"
                                             aria-hidden="true"></i></button>
                                 </td>

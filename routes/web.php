@@ -71,3 +71,5 @@ Route::get('/admin/post',[adminController::class,'showPost']);
 Route::get('/admin/p',[adminController::class,'showUser']);
 
 Route::post('/create/',[feedsController::class,'seePost']);
+
+Route::get('/settings',[feedsController::class,'settings']);
