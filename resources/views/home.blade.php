@@ -29,7 +29,7 @@
                 </div>
                 <div class="post-content">
                     <h5 class="fw-bold">{{ $post['title'] }}</h5 class="fw-bold">
-                    <span>{{ $post['content'] }}</span>
+                    <span>{!! $post['content'] !!}</span>
                 </div>
                 <div class="post-actions">
                     <div class="d-flex align-items-center">
@@ -63,7 +63,7 @@
 @section('rbar')
     <div class="card-page">
         <h5 class="fw-bold w-100">{{ $current }}</h5>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quos obcaecati id qui</p>
+        <p> Saat ini anda sedan berada di laman {{ $current }}</p>
         <a class="btn btn-primary w-100" href="/createPost">Create Post</a>
     </div>
 @endsection

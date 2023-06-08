@@ -49,7 +49,7 @@ Route::post('/register', [registerController::class,'processForm'])->name('regis
 
 Route::get('/home',[feedsController::class, 'showHome'])->name('home');
 Route::get('/popular',[feedsController::class, 'showPopular']);
-Route::get('/all',[feedsController::class, 'showHome']);
+Route::get('/all',[feedsController::class, 'showAll']);
 
 Route::get('/t/{topic}/',[feedsController::class, 'showTopicPost']);
 Route::get('/t/{topic}/post/{post}',[feedsController::class, 'showPost']);
@@ -70,3 +70,4 @@ Route::get('/admin/topik',[adminController::class,'showTopik']);
 Route::get('/admin/post',[adminController::class,'showPost']);
 Route::get('/admin/p',[adminController::class,'showUser']);
 
+Route::post('/create/',[feedsController::class,'seePost']);

@@ -31,11 +31,21 @@ class feedsController extends Controller
     public function showPopular()
     {
         return view('home', [
-            'current' => 'Home',
+            'current' => 'Popular',
             "posts" => Post::all()->sortByDesc('likes'),
             "topiks" => Topik::all()
         ]);
     }
+
+    public function showAll()
+    {
+        return view('home', [
+            'current' => 'All',
+            "posts" => Post::all(),
+            "topiks" => Topik::all()
+        ]);
+    }
+
 
     public function showPost($topic, $post)
     {
@@ -108,7 +118,16 @@ class feedsController extends Controller
         return view('search', [
             'current' => 'Search Results',
             "topiks" => Topik::all(),
-            'post' => Post::find('Title_lorem_ipsum')
+            'post' => Post::find('Title_lorem_ipsum'),
+            'post1' => Post::find('Closing_Ceremony_Dies_Natalis_Sistem_Informasi_Yang_Ke-10'),
+            'post2' => Post::find('Dies_Natalis_ke-10_Program_Studi_Sistem_Informasi!'),
+
+        ]);
+    }
+
+    public function seePost(Request $request){
+        return view('tes', [
+            "data" => $request
         ]);
     }
 }

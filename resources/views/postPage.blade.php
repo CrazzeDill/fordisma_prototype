@@ -21,7 +21,7 @@
         </div>
         <div class="post-content">
             <h5 class="fw-bold">{{ $post['title'] }}</h5 class="fw-bold">
-            <span>{{ $post['content'] }}</span>
+            <span>{!! $post['content'] !!}</span>
         </div>
         <div class="post-actions">
             <div class="d-flex align-items-center">
